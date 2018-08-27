@@ -9,29 +9,26 @@ int main(int argc, char ** argv) {
 
     if (argc > 2){
 
-        Services::NetworkInterface::DisplayInterfaces();
 
         std::cout << "Search Interfaces Map: " << argv[1] << "\n";
+        auto ifaceKey   = std::string{argv[1]};
+        auto familyKey  = std::string{argv[2]};
+        auto ifacesMap = Services::NetworkInterface::GetNetworkInterfacesMap();
+        auto found = (ifacesMap.find(std::string{ifaceKey})!=ifacesMap.end()) && (ifacesMap[ifaceKey].find(familyKey) != ifacesMap[ifaceKey].end());
 
-        //auto ifacesMap = Services::NetworkInterface::GetInterfacesMap(std::string{argv[2]});
-        //auto itFound = ifacesMap.find(std::string{argv[1]});
-        //auto found = itFound != ifacesMap.end();
-
-        /*if (!found){
-
+        if (!found){
             std::cout << "\t -- Not Found -- \n";
             std::cout << "\t Availale interfaces are: \n";
-            for (auto i : ifacesMap) {
-
-                std::cout << "\t " << i.first << "\n";
-            }
+            Services::NetworkInterface::DisplayInterfaces();
 
         } else {
 
-            std::cout << "\t ---- Found ---- \n";
-            std::cout << "\t IP: " << itFound->second.ip << "\n";
 
-        }*/
+
+            std::cout << "\t ---- Found ---- \n";
+            std::cout << "\t IP: " << ifacesMap[ifaceKey][familyKey].ip << "\n";
+
+        }
 
 
     } else {
