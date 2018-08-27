@@ -2,8 +2,8 @@
 // Created by Julian Andres Guarin Reyes on 8/9/18.
 //
 
-#ifndef UDPSERVER_H
-#define UDPSERVER_H
+#ifndef __NETWORKINTERFACES_UTIL__
+#define __NETWORKINTERFACES_UTIL__
 
 #include <map>
 #include <set>
@@ -57,4 +57,4 @@ namespace Services {
 
 }
 
-#endif //UDPSERVER_H
+#endif //__NETWORKINTERFACES_UTIL__
